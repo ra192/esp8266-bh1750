@@ -18,7 +18,7 @@
 #endif
 
 const char* ssid = "ra";
-const char* password = "********";
+const char* password = "xxxxxxxx";
 
 uint8_t buffer[2];
 
@@ -65,6 +65,8 @@ void handleRoot() {
 		Serial.print("Brzo error : ");
 		Serial.println(error);
 
+		String response="{'error':";
+		response=response+error+"}";
     server.send(200, "application/json", "{'error':}");
 	}
 }
@@ -94,7 +96,7 @@ void setup() {
   Serial.println("Starting...");
 
   // Wait for connection
-  while (WiFi.status() != WL_CONNECTED) {
+	while (WiFi.status() != WL_CONNECTED) {
     delay(500);
     Serial.print(".");
   }
