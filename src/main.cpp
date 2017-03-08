@@ -55,8 +55,11 @@ void handleRoot() {
   if (error == 0) {
 		Serial.print("Lux = ");
 		Serial.println(sens_val);
-    String response="{'lux':xxx}";
-    server.send(200, "application/json", response);
+
+		String response="{'lux':";
+		response=response+sens_val+"}";
+
+		server.send(200, "application/json", response);
 	}
 	else {
 		Serial.print("Brzo error : ");
