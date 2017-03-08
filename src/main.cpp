@@ -17,8 +17,8 @@
 #define  BH1750_ADR 0x23
 #endif
 
-const char* ssid = "******";
-const char* password = "******";
+const char* ssid = "ra";
+const char* password = "********";
 
 uint8_t buffer[2];
 
@@ -110,10 +110,6 @@ void setup() {
 
   server.on("/", handleRoot);
 
-  server.on("/inline", [](){
-    server.send(200, "text/plain", "this works as well");
-  });
-
   server.onNotFound(handleNotFound);
 
   server.begin();
@@ -131,5 +127,5 @@ void setup() {
 }
 
 void loop() {
-
+	server.handleClient();
 }
