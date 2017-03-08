@@ -35,7 +35,7 @@ uint8_t ICACHE_RAM_ATTR get_BH1750_value(uint16_t *sens_val) {
 
 	uint16_t raw_val = ((buffer[0] << 8) | buffer[1]);
 
-  *sens_val=raw_val;
+  *sens_val=raw_val/1.2;
 
 	return bcode;
 }
