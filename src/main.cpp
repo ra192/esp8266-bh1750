@@ -17,8 +17,8 @@
 #define  BH1750_ADR 0x23
 #endif
 
-const char* ssid = "bancore";
-const char* password = "bancore11235";
+const char* ssid = "******";
+const char* password = "******";
 
 uint8_t buffer[2];
 
