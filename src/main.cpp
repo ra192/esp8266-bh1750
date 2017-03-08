@@ -18,11 +18,11 @@
 #endif
 
 const char* ssid = "ra";
-const char* password = "xxxxxxxx";
+const char* password = "********";
 
 uint8_t buffer[2];
 
-uint8_t ICACHE_RAM_ATTR get_BH1750_value(uint8_t *sens_val) {
+uint8_t ICACHE_RAM_ATTR get_BH1750_value(uint16_t *sens_val) {
 	uint32_t ADC_code = 0;
 	uint8_t	bcode = 0;
 
@@ -33,7 +33,7 @@ uint8_t ICACHE_RAM_ATTR get_BH1750_value(uint8_t *sens_val) {
 
 	bcode = brzo_i2c_end_transaction();
 
-	uint8_t raw_val = ((buffer[0] << 8) | buffer[1]);
+	uint16_t raw_val = ((buffer[0] << 8) | buffer[1]);
 
   *sens_val=raw_val;
 
@@ -45,7 +45,7 @@ MDNSResponder mdns;
 ESP8266WebServer server(80);
 
 uint8_t error = 0;
-uint8_t sens_val = 0;
+uint16_t sens_val = 0;
 
 void handleRoot() {
   Serial.println("Request recieved");
